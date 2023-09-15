@@ -67,5 +67,19 @@ button {
   box-shadow: 1rem 1rem 1.6rem #d1d9e6, 0.6rem 0.6rem 1.6rem #fff; */
 }
 
+@media(max-width: 768px) {
+  .calculator-body {
+    left: 50px;
+    top: 180px;
+  }
+}
+
+@media(max-width: 375px) {
+  .calculator-body {
+    left: 50px;
+    top: 100px;
+  }
+}
+
 
 
