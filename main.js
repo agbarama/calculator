@@ -7,16 +7,51 @@
 // });
 
 function appendToResult(value) {
-  document.getElementById("result").value += value;
+  let displayInput = (document.getElementById("result").value += value);
 }
+
+// function signUsed() {
+//   let signUsed = false;
+
+//   const inputField = document.getElementById(".result");
+//   inputField.addEventListener("input", function (event) {
+//     const inputValue = event.target.value;
+
+//     if (inputValue.match("+", "-", "/", "*")) {
+//       signUsed = true;
+//     } else {
+//       signUsed = false;
+//     }
+//   });
+
+//   const calculatorForm = document.querySelector(".calculator-form");
+//   calculatorForm.addEventListener("submit", function (event) {
+//     if (signUsed) {
+//       alert("Error");
+//       event.preventDefault();
+//     }
+//   });
+// }
 
 function calculate() {
   try {
     let expression = document.getElementById("result").value;
-    let result = eval(expression);
+    // let result = eval(expression);
     document.getElementById("result").value = result;
+
+    // Check if the expression contains morethan two maths operators
+    const operators = expression.match("+", "-", "/", "*");
+
+    if (operators && operators.lenghth > 1) {
+      throw new Error("Error!!");
+    }
+    // Evaluate expression and return result
+    let result = eval(expression);
   } catch (error) {
     document.getElementById("result").value = "error";
+    setTimeout(function () {
+      alert("One mathematical function at a time");
+    }, 1000);
   }
 }
 
@@ -34,3 +69,12 @@ document.addEventListener("keydown", function (event) {
     calculate();
   }
 });
+
+// function blockFunction() {
+//   const displayInput = (document.getElementById("result").value += value);
+//   if (displayInput === "+" && "-") {
+//     console.log("error");
+//   }
+// }
+
+// blockFunction();
